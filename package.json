@@ -1,0 +1,31 @@
+{
+  "name": "intimate_partner_violence-mobile_app-functions",
+  "version": "1.0.0",
+  "description": "Intimate_Partner_Violence-Mobile_App-Functions",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramathmanjitha27/Intimate_Partner_Violence-Mobile_App-Functions.git"
+  },
+  "author": "Ramath Subodha Kenuri Thashmila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramathmanjitha27/Intimate_Partner_Violence-Mobile_App-Functions/issues"
+  },
+  "homepage": "https://github.com/ramathmanjitha27/Intimate_Partner_Violence-Mobile_App-Functions#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
