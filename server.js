@@ -1,27 +1,30 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+import blogRouter from './routes/blogRoute.js'
 
-dotenv.config();
+dotenv.config()
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const app = express()
+app.use(cors())
+app.use(express.json())
 
 try {
-  const conn = await mongoose.connect(process.env.MONGO_URI);
+  const conn = await mongoose.connect(process.env.MONGO_URI)
 
-  console.log(`MongoDB connected successfully : ${conn.connection.host}`);
+  console.log(`MongoDB connected successfully : ${conn.connection.host}`)
 } catch (error) {
   console.log(
-    "MongoDB connect error occurred. Please check your MongoDB_URI is connected"
-  );
-  console.log(error);
+    'MongoDB connect error occurred. Please check your MongoDB_URI is connected'
+  )
+  console.log(error)
 
-  process.exit(1);
+  process.exit(1)
 }
 
-app.listen(port, () => console.log(`Server run on port : ${port}`));
+app.use('/api/blog', blogRouter)
+
+app.listen(port, () => console.log(`Server run on port : ${port}`))
