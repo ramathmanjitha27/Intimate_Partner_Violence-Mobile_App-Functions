@@ -26,10 +26,24 @@ export const createNewEvidence = async (req, res) => {
 
 //  @desc   Update evidence incident
 //  @route  PUT /api/evidence/update-evidence
-// export const updateEvidence = async (req, res) => {
-//   const { userId, title, date, time, place, description, imgs } = req.body
+export const updateEvidence = async (req, res) => {
+  const { userId, title, date, time, place, description, imgs } = req.body
 
-// }
+  const updatedProof = {imgs: imgs};
+
+  const updatedEvidence = {
+    userId,
+    title,
+    date,
+    time,
+    place,
+    description,
+    proof: updatedProof,
+  }
+
+  return res.json({ success: true, evidence: updatedEvidence });
+
+}
 
 //  @desc   Get evidence incident by Id
 //  @route  GET /api/evidence/get-evidence
