@@ -3,8 +3,8 @@ import { createNewEvidence, updateEvidence, getEvidenceById, getAllEvidence } fr
 const evidenceRouter = express.Router()
 
 evidenceRouter.post('/create-evidence', createNewEvidence)
-evidenceRouter.put('/update-evidence', updateEvidence)
-evidenceRouter.get('/get-evidence', getEvidenceById)
+evidenceRouter.put('/update-evidence/:id', updateEvidence)
+evidenceRouter.get('/get-evidence/:id', getEvidenceById)
 evidenceRouter.get('/get-all-evidence', getAllEvidence)
 
 

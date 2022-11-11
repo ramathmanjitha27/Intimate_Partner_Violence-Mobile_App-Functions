@@ -1,55 +1,44 @@
 import EvidenceModel from '../models/EvidenceModel.js'
 
-//  @desc   Get all evidence incidents
-//  @route  GET /api/goals
+//  @desc   Create new evidence incident
+//  @route  POST /api/evidence/create-evidence
 export const createNewEvidence = async (req, res) => {
-  const { expertId, victimId, victimName, expertName } = req.body
+  const { userId, title, date, time, place, description, imgs } = req.body;
+
+  const newProof = {imgs: imgs};
 
   try {
-    const newChat = await ChatModel.create({
-      expertId,
-      victimId,
-      victimName,
-      expertName,
+    const newEvidence = await EvidenceModel.create({
+      userId,
+      title,
+      date,
+      time,
+      place,
+      description,
+      proof: newProof,
     })
-    return res.status(201).json({ success: true, chat: newChat })
+    return res.status(201).json({ success: true, evidence: newEvidence })
   } catch (err) {
     console.log(err)
     res.json(err)
   }
 }
 
-//   update chat with new messages
-export const updateEvidence = async (req, res) => {
-  const { chatId, msg, time, role } = req.body
+//  @desc   Update evidence incident
+//  @route  PUT /api/evidence/update-evidence
+// export const updateEvidence = async (req, res) => {
+//   const { userId, title, date, time, place, description, imgs } = req.body
 
-  const newMessage = {
-    msg: msg,
-    time: time,
-    role: role,
-  }
+// }
 
-  ChatModel.findByIdAndUpdate(
-    { _id: chatId },
-    { $push: { messages: newMessage } }
-  )
-    .then(() => {
-      res.status(200).json({ status: 'New message added' })
-    })
-    .catch((err) => {
-      res.json(err)
-      console.log(err)
-    })
-}
-
-// get chat details by chatId
+//  @desc   Get evidence incident by Id
+//  @route  GET /api/evidence/get-evidence
 export const getEvidenceById = async (req, res) => {
-    const { chatId } = req.query
-  
+    
     try {
-      ChatModel.findById({ _id: chatId })
-        .then((chat) => {
-          res.json({ success: true, chat: chat })
+      EvidenceModel.findById(req.params.id)
+        .then((evidence) => {
+          res.json({ success: true, evidence: evidence })
         })
         .catch((err) => {
           console.log(err)
@@ -59,15 +48,16 @@ export const getEvidenceById = async (req, res) => {
       console.log(err)
       res.json(err)
     }
+
   }
 
 
 //  @desc   Get all evidence incidents
-//  @route  GET /api/goals
+//  @route  GET /api/evidence/get-all-evidence
 export const getAllEvidence = async (req, res) => {
-    ChatModel.find()
-      .then((chats) => {
-        res.json({ success: true, chats: chats })
+    EvidenceModel.find()
+      .then((evidence) => {
+        res.json({ success: true, evidence: evidence })
       })
       .catch((err) => {
         res.json(err)

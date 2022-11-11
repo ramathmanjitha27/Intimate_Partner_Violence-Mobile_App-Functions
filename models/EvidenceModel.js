@@ -26,7 +26,7 @@ const evidenceSchema = mongoose.Schema({
     required: [true, 'Enter description'],
   },
   proof: [{
-    img: String,
+    imgs: [String],
   }],
 
 })
