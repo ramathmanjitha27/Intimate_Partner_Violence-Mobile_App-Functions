@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import blogRouter from './routes/blogRoute.js'
 import chatRouter from './routes/chatRoute.js'
+import evidenceRouter from './routes/EvidenceRoute.js'
 
 dotenv.config()
 
@@ -28,5 +29,6 @@ try {
 
 app.use('/api/blog', blogRouter)
 app.use('/api/chats', chatRouter)
+app.use('/api/evidence', evidenceRouter)
 
 app.listen(port, () => console.log(`Server run on port : ${port}`))
