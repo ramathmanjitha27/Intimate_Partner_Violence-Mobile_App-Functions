@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 import blogRouter from './routes/blogRoute.js'
 import chatRouter from './routes/chatRoute.js'
 import userRouter from './routes/userRoute.js'
-import evidenceRouter from './routes/EvidenceRoute.js'
+import evidenceRouter from './routes/evidenceRoute.js'
 
 dotenv.config()
 
